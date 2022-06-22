@@ -2,7 +2,7 @@ using Catalog.API.Data;
 using Catalog.API.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.WebHost.ConfigureKestrel(options => options.ListenLocalhost(6261));
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -11,6 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ICatalogContext, CatalogContext>();
 builder.Services.AddScoped<IProductRepository,ProductRepository>();
+
 
 var app = builder.Build();
 
