@@ -13,9 +13,20 @@ services:
     container_name: basketdb
     restart: always
     ports:
-        - "6379:6379"
-   
-   portainer:
+        - "6379:6379" 
+  
+  discountdb:
+    container_name: discountdb
+    environment:
+        - POSTGRESQL_USER=admin
+        - POSTGRESQL_PASSWORD=admin1234
+        - POSTGRESQL_DB=DiscountDb
+    restart: always
+    ports:
+        - "5432:5432"
+    volumes:
+        - postgres_data:/var/lib/postgresql/data/ 
+  portainer:
     container_name: portainer
     restart: always
     ports:
