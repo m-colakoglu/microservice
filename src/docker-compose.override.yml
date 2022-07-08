@@ -24,8 +24,6 @@ services:
     restart: always
     ports:
         - "5432:5432"
-    networks:
-      - postgres
     volumes:
         - postgres_data:/var/lib/postgresql/data/ 
   portainer:
@@ -59,5 +57,16 @@ services:
       - basketdb
     ports:
       - "8001:5001"
+
+  discount.api:
+    container_name: discount.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5002
+      - "DatabaseSettings:ConnectionString=Server=discountdb;Port=5432;Database=DiscountDb;User Id=admin;Password=admin1234;"
+    depends_on:
+      - discountdb
+    ports:
+      - "8002:5002"
 
 
