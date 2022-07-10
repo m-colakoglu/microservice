@@ -1,6 +1,6 @@
 ﻿using Npgsql;
 
-namespace Discount.Gprc.Extensions
+namespace Discount.Grpc.Extensions
 {
     public static class HostExtensions
     {
@@ -22,7 +22,7 @@ namespace Discount.Gprc.Extensions
                     connection.Open();
 
                     using var command = connection.CreateCommand();
-                    command.CommandText = "DROP TABLE IF EXIST Coupon";
+                    command.CommandText = "DROP TABLE IF EXISTS Coupon";
                     command.ExecuteNonQuery();
 
                     command.CommandText = @"CREATE TABLE Coupon(Id SERIAL PRIMARY KEY,
