@@ -9,6 +9,9 @@ services:
 
   discountdb:
     image: postgres
+
+  orderdb:
+    image: mcr.microsoft.com/azure-sql-edge:latest
   portainer:
     image: portainer/portainer-ce
   catalog.api:
